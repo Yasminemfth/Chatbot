@@ -1,56 +1,84 @@
-# 🍄 ChatBot — OpenRouter AI
+# ChatBot — OpenRouter AI
 
-Un chatbot web configurable avec personnalité personnalisable via system prompt, alimenté par OpenRouter.
+Chatbot web réalisé avec l'assistance de Claude AI dans le cadre d'un apprentissage du développement web et de l'intégration d'API d'intelligence artificielle. La personnalité du bot est entièrement configurable via un system prompt modifiable directement dans l'interface.
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
-- 💬 **Historique de messages** complet dans la session
-- 🎭 **System prompt modifiable** — change la personnalité du bot en temps réel
-- 🔑 **Clé API saisie dans l'app** — aucune config serveur nécessaire
-- 🤖 **Multi-modèles** — GPT-4o, Claude, Llama, Gemini...
-- 🍄 **Thème Mario** par défaut (entièrement personnalisable)
-- 📱 Responsive mobile
+- Historique de messages complet sur toute la session
+- System prompt modifiable en temps réel — change la personnalité du bot sans recharger la page
+- Clé API stockée directement dans le code source
+- Détection automatique du personnage via le system prompt (thème visuel adaptatif)
+- 10 personnalités prédéfinies : Mario, Garfield, Pirate, Chef, Ninja, Sorcier, Robot, Princesse, Alien, Zombie
+- Interface responsive mobile
 
-## 🚀 Utilisation
+## Utilisation
 
-1. **Clone ou télécharge** ce repo
-2. Ouvre `index.html` dans ton navigateur (aucun serveur requis)
-3. Entre ta **clé API OpenRouter** ([obtenir une clé](https://openrouter.ai/keys))
-4. Modifie le **System Prompt** pour changer la personnalité
-5. Choisis un **modèle** et commence à chatter !
+### Prérequis
 
-## 🎭 Exemples de System Prompts
+Le fichier `index.html` ne peut pas être ouvert directement depuis l'explorateur de fichiers (`file://`) car le navigateur bloquera les appels API pour des raisons de sécurité. Un serveur local est nécessaire.
 
-**Mario :**
+**Option 1 — PHP (recommandé si PHP est installé)**
+```bash
+cd chemin/vers/chatbot
+php -S 127.0.0.1:8000
 ```
-Tu es Mario, le célèbre plombier du Royaume Champignon ! Tu utilises "Mamma mia !", "Let's-a go !", "Wahoo !" et fais référence à Bowser et Peach.
+Puis ouvrir [http://127.0.0.1:8000](http://127.0.0.1:8000) dans le navigateur.
+
+**Option 2 — Laragon**
+
+Copier le dossier `chatbot` dans `C:/laragon/www/`, démarrer Laragon puis accéder à `http://localhost/chatbot/`.
+
+**Option 3 — VS Code Live Server**
+
+Installer l'extension Live Server, puis clic droit sur `index.html` > *Open with Live Server*.
+
+### Configuration de la clé API
+
+Ouvrir `app.js` et remplacer la valeur de `API_KEY` ligne 3 :
+
+```js
+const API_KEY = "sk-or-v1-REMPLACE-MOI";
 ```
 
-**Pirate :**
+Une clé API OpenRouter est disponible gratuitement sur [openrouter.ai/keys](https://openrouter.ai/keys). Certains modèles sont gratuits (ex: `meta-llama/llama-3.1-8b-instruct:free`), d'autres sont payants.
+
+## Exemples de system prompts
+
+**Jeff Bezos**
 ```
-Tu es un redoutable pirate des Caraïbes. Tu parles avec "Arrrr !", "Moussaillon !", et tu fais référence aux trésors et à la mer.
+Tu es Jeff Bezos, fondateur d'Amazon. Tu donnes des conseils de commerce avec assurance et ambition. 
+Tu parles de ton obsession pour le client, de la pensée à long terme et de l'innovation. 
+Tu cites tes expériences chez Amazon et Blue Origin. Réponds en français.
 ```
 
-**Assistant sérieux :**
+**Pirate**
 ```
-Tu es un assistant professionnel, concis et précis. Tu réponds toujours de façon structurée.
+Tu es un redoutable pirate des Caraïbes. Tu parles avec "Arrrr !", "Moussaillon !", 
+et tu fais référence aux trésors et à la mer. Réponds en français.
 ```
 
-## 🛠 Stack technique
+**Assistant professionnel**
+```
+Tu es un assistant professionnel, concis et précis. 
+Tu réponds toujours de façon structurée. Réponds en français.
+```
 
-- HTML / CSS / JavaScript vanilla
-- [OpenRouter API](https://openrouter.ai) pour l'IA
-- Google Fonts (Press Start 2P + Nunito)
-- Aucune dépendance npm
+## Stack technique
 
-## 📁 Structure
+- HTML / CSS / JavaScript vanilla — aucune dépendance, aucun build
+- [OpenRouter API](https://openrouter.ai) — accès unifié à GPT-4o, Claude, Llama, Gemini et d'autres
+- Google Fonts — Fredoka + Nunito
+
+## Structure du projet
 
 ```
 chatbot/
-└── index.html   # Toute l'app dans un seul fichier
+├── index.html   — Structure HTML
+├── style.css    — Styles et thèmes visuels
+├── app.js       — Logique, appels API, gestion de l'historique
 └── README.md
 ```
 
-## 📝 Licence
+## Licence
 
 MIT
