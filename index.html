@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>✨ ChatBot</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- floating particles -->
+<div class="particles" id="particles"></div>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="logo">
+    <div class="logo-icon" id="logo-icon">✨</div>
+    <div>
+      <div class="logo-name">Chat<span class="hl" id="logo-hl">Bot</span></div>
+      <div class="logo-sub">powered by OpenRouter AI</div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ── SYSTEM PROMPT ── -->
+  <div class="card">
+    <div class="card-header open" onclick="togglePanel(this)">
+      <div class="card-icon">🎭</div>
+      <div class="card-title">Personnalité</div>
+      <span class="card-arrow">▶</span>
+    </div>
+    <div class="card-body">
+
+      <!-- PRESETS -->
+      <div class="presets" id="presets">
+        <button class="preset-btn" onclick="applyPreset('mario')">🍄 Mario</button>
+        <button class="preset-btn" onclick="applyPreset('garfield')">🐱 Garfield</button>
+        <button class="preset-btn" onclick="applyPreset('pirate')">☠️ Pirate</button>
+        <button class="preset-btn" onclick="applyPreset('chef')">👨‍🍳 Chef</button>
+        <button class="preset-btn" onclick="applyPreset('ninja')">🥷 Ninja</button>
+        <button class="preset-btn" onclick="applyPreset('wizard')">🧙 Sorcier</button>
+        <button class="preset-btn" onclick="applyPreset('robot')">🤖 Robot</button>
+        <button class="preset-btn" onclick="applyPreset('princess')">👸 Princesse</button>
+        <button class="preset-btn" onclick="applyPreset('alien')">👽 Alien</button>
+        <button class="preset-btn" onclick="applyPreset('zombie')">🧟 Zombie</button>
+      </div>
+
+      <label>System prompt — décris librement la personnalité</label>
+      <textarea id="system-prompt" rows="3" placeholder="Ex: Tu es un vampire élégant du 18e siècle qui répond avec sophistication...">Tu es un assistant IA sympa et serviable. Tu réponds de façon claire, chaleureuse et utile. Réponds en français.</textarea>
+    </div>
+  </div>
+
+  <!-- ── CHAT ── -->
+  <div class="card">
+
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="online-dot"></div>
+        <div class="chat-title">Conversation</div>
+      </div>
+      <div class="msg-badge" id="msg-counter">0 messages</div>
+    </div>
+
+    <div id="chat-messages"></div>
+    <div id="status"></div>
+
+    <div class="input-bar">
+      <textarea
+        id="user-input"
+        placeholder="Écris ton message... (Entrée pour envoyer)"
+        rows="1"
+      ></textarea>
+      <button class="btn btn-send" id="send-btn" onclick="sendMessage()">
+        Envoyer ✦
+      </button>
+      <button class="btn btn-clear" onclick="clearHistory()" title="Effacer">🗑</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
