@@ -1,6 +1,6 @@
 
 //   CLÉ API — remplace par ta clé OpenRouter
-const API_KEY = "sk-or-v1-REMPLACE-MOI";
+const API_KEY = "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";
 const MODEL   = "openai/gpt-4o-mini";
 
 let messageHistory = [];
